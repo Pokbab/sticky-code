@@ -1,10 +1,9 @@
 package test.utils;
 
+import static org.junit.Assert.*;
+
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class StringUtilsTest {
 
@@ -24,6 +23,18 @@ public class StringUtilsTest {
 		assertTrue("문자열 속에 찾는 키워드가 있으면 성공(대소문자 무시)", StringUtils.containsIgnoreCase("123pokbabzzz", "POKBAB"));
 
 		assertTrue("문자열에 공백이 포함되면 성공", StringUtils.containsWhitespace("abcde fg"));
+	}
+
+	@Test
+	public void testIsAlpha() {
+		assertTrue("문자열 속에 영문자만 있으면 성공", StringUtils.isAlpha("test"));
+		assertTrue("문자열 속에 한글이 포함되어도 성공", StringUtils.isAlpha("테스트"));
+	}
+
+	@Test
+	public void testPad() {
+		assertEquals("우측으로 남은공간을 공백으로 채움", "test      ", StringUtils.rightPad("test", 10, ' '));
+		assertEquals("좌측으로 남은공간을 공백으로 채움", "      test", StringUtils.leftPad("test", 10, ' '));
 	}
 
 }
