@@ -37,4 +37,11 @@ public class StringUtilsTest {
 		assertEquals("좌측으로 남은공간을 공백으로 채움", "      test", StringUtils.leftPad("test", 10, ' '));
 	}
 
+	@Test
+	public void testSubstringBetween() {
+		assertEquals("지정된 tag 사이에 속한 문자열 추출, 여러개인 경우 첫번째 선택", "20200910", StringUtils.substringBetween("SECURE.20200910..111703206..66799", "."));
+		assertEquals("지정된 문자열(open, close) 사이에 속한 문자열 추출, 여러개인 경우 첫번째 선택", "20200", StringUtils.substringBetween("SECURE.20200910.111703206.66799", ".", "9"));
+		assertArrayEquals("지정된 문자열(open, close) 사이에 속한 문자열을 배열로 추출", new String[] {"20200910", "111703206"}, StringUtils.substringsBetween("SECURE.20200910..111703206..66799", ".", "."));
+	}
+
 }
