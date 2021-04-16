@@ -44,4 +44,11 @@ public class StringUtilsTest {
 		assertArrayEquals("지정된 문자열(open, close) 사이에 속한 문자열을 배열로 추출", new String[] {"20200910", "111703206"}, StringUtils.substringsBetween("SECURE.20200910..111703206..66799", ".", "."));
 	}
 
+	@Test
+	public void testAppendIfMissing() {
+		assertEquals("마지막 단어가 다를 경우 추가", "/irteam/file/path/", StringUtils.appendIfMissing("/irteam/file/path", "/"));
+		assertEquals("마지막 단어가 다를 경우 추가", "/irteam/file/path/", StringUtils.appendIfMissing("/irteam/file/path", "/", "/"));
+		assertEquals("마지막 단어가 다를 경우 추가", "/irteam/file/path/", StringUtils.appendIfMissing("/irteam/file/path/", "/", "/"));
+	}
+
 }
