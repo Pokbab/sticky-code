@@ -13,9 +13,28 @@ public class EncodeTest {
     @SneakyThrows
     public void test() {
 
-        byte[] bytes = "1376PAY".getBytes("euc-kr");
+        byte[] bytes1 = "���θ�".getBytes("euc-kr");
 
-        System.out.println(bytes);
+        byte[] bytes2 = "법인명".getBytes("euc-kr");
+
+        String asdasd = new String("법인명".getBytes("euc-kr"));
+        String asdasd2 = new String("법인명".getBytes("euc-kr"), "utf-8");
+
+        String dd = new String("���θ�".getBytes("euc-kr"), "utf-8");
+        String ss = new String("법인명".getBytes("euc-kr"), "euc-kr");
+
+        System.out.println(new String(dd.getBytes(), "euc-kr"));
+
+        // byte[] bytes = "테스트".getBytes("euc-kr");
+        // System.out.println(new String(bytes, "utf-8"));
+        // Assert.assertEquals("테스트", new String(bytes, "euc-kr"));
+        // Assert.assertEquals("테스트", new String("테스트".getBytes("euc-kr"), "euc-kr"));
+
+
+        // new String("¹ýÀÎ¸í", "euc-kr");
+        String aa = new String("¹ýÀÎ¸í".getBytes(), "euc-kr");
+
+        System.out.println(new String(dd.getBytes(), "euc-kr"));
     }
 
     @Test

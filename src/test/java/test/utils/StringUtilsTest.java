@@ -51,4 +51,17 @@ public class StringUtilsTest {
 		assertEquals("마지막 단어가 다를 경우 추가", "/irteam/file/path/", StringUtils.appendIfMissing("/irteam/file/path/", "/", "/"));
 	}
 
+	@Test
+	public void testRemoveEnd() {
+		assertEquals("특정 문자열 삭제", "irteamfilepathfile.gz", StringUtils.remove("/irteam/file/path/file.gz", "/"));
+		assertEquals("지정된 단어가 마지막 문자열일 경우 삭제", "/irteam/file/path/file", StringUtils.removeEnd("/irteam/file/path/file.gz", ".gz"));
+	}
+
+	@Test
+	public void testEndsWith() {
+		assertTrue("문자열 끝자리 체크", StringUtils.endsWith("aaa_real", "_real"));
+		assertTrue("문자열 끝자리 체크", StringUtils.endsWithAny("aaa_alpha", "_alpha", "_beta", "_local"));
+		assertTrue("문자열 끝자리 체크", StringUtils.endsWithIgnoreCase("aaa_ALPHA", "_alpha"));
+	}
+
 }
