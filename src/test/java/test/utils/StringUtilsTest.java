@@ -38,7 +38,9 @@ public class StringUtilsTest {
 	}
 
 	@Test
-	public void testSubstringBetween() {
+	public void testSubstring() {
+		assertEquals("문자열 범위를 벗어난 인덱스를 지정하면 공백 반환", "", StringUtils.substring("test", 5, 10));
+
 		assertEquals("지정된 tag 사이에 속한 문자열 추출, 여러개인 경우 첫번째 선택", "20200910", StringUtils.substringBetween("SECURE.20200910..111703206..66799", "."));
 		assertEquals("지정된 문자열(open, close) 사이에 속한 문자열 추출, 여러개인 경우 첫번째 선택", "20200", StringUtils.substringBetween("SECURE.20200910.111703206.66799", ".", "9"));
 		assertArrayEquals("지정된 문자열(open, close) 사이에 속한 문자열을 배열로 추출", new String[] {"20200910", "111703206"}, StringUtils.substringsBetween("SECURE.20200910..111703206..66799", ".", "."));
@@ -49,6 +51,19 @@ public class StringUtilsTest {
 		assertEquals("마지막 단어가 다를 경우 추가", "/irteam/file/path/", StringUtils.appendIfMissing("/irteam/file/path", "/"));
 		assertEquals("마지막 단어가 다를 경우 추가", "/irteam/file/path/", StringUtils.appendIfMissing("/irteam/file/path", "/", "/"));
 		assertEquals("마지막 단어가 다를 경우 추가", "/irteam/file/path/", StringUtils.appendIfMissing("/irteam/file/path/", "/", "/"));
+	}
+
+	@Test
+	public void testRemoveEnd() {
+		assertEquals("특정 문자열 삭제", "irteamfilepathfile.gz", StringUtils.remove("/irteam/file/path/file.gz", "/"));
+		assertEquals("지정된 단어가 마지막 문자열일 경우 삭제", "/irteam/file/path/file", StringUtils.removeEnd("/irteam/file/path/file.gz", ".gz"));
+	}
+
+	@Test
+	public void testEndsWith() {
+		assertTrue("문자열 끝자리 체크", StringUtils.endsWith("aaa_real", "_real"));
+		assertTrue("문자열 끝자리 체크", StringUtils.endsWithAny("aaa_alpha", "_alpha", "_beta", "_local"));
+		assertTrue("문자열 끝자리 체크", StringUtils.endsWithIgnoreCase("aaa_ALPHA", "_alpha"));
 	}
 
 }
