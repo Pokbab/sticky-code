@@ -19,7 +19,7 @@ public abstract class Person {
 
 }
 
-
+ㅇㄹㅇㄹㅇㄹㅇㄹ
 
 ㅇㄹㅇㄹ
 ㅇ
@@ -27,4 +27,4 @@ public abstract class Person {
 ㅇㄹ
                 ㅇㄹ
 ㅇ
-                        
+                        ㅇㄹㅇ
